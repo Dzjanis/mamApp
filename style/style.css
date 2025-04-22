@@ -27,6 +27,8 @@ body {
 :root {
   --col-width: 100dvw;
   --font-family: 'Simonetta';
+  --card-size: 10rem;
+  --playGround-size: 920px;
 }
 .header, .main, .footer {
   width: var(--col-width);
@@ -89,3 +91,64 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playground {
+  width: var(--playGround-size);
+  height: var(--playGround-size);
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1.25rem;
+  justify-items: center;
+  align-items: center;
+}
+.flip__card {
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+.flip__card_wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  transition: transform 0.6s;
+  transform-style: preserve-3d; /* Учитывает 3D-вращение */
+  position: relative;
+}
+.card__close, .card__open {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; /* Скрывает обратную сторону */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+  border-radius: 10px;
+  &.card__open img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+.card__close {
+  background-color: #b66a0b;
+}
+.card__open {
+  background: #F1F2FFCD;
+  transform: rotateY(180deg); /* Переворачивает заднюю сторону */
+}
+.flip__card_wrap.active, .flip__card_wrap.match{
+  transform: rotateY(180deg); /* Переворот при наведении */
+}
+

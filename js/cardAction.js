@@ -11,9 +11,9 @@ playground.addEventListener('click', (event) => {
   const card = event.target.closest('.flip__card');
   if (card) {
     cardsOpenCounter++;
-    console.log('pin ' + cardsOpenCounter);
+    console.log('pin ' + cardsOpenCounter + card);
     if (cardsOpenCounter < 2) {
-      event.target.classList.add('active');
+      card.classList.add('active');
       console.log('pin');
     } else {
       setTimeout(() => {
@@ -21,7 +21,7 @@ playground.addEventListener('click', (event) => {
           card.classList.remove('active');
           cardsOpenCounter = 0;
         });
-      }, 1000);
+      }, 500);
     }
   }
 });

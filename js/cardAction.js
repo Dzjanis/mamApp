@@ -15,6 +15,18 @@ playground.addEventListener('click', function (event) {
     if (cardsOpenCounter <= 2) {
       card.classList.add('active');
       console.log('pin');
+      switch (cardsOpenCounter) {
+        case 1:
+          const img1Alt = card.querySelector('img').alt;
+          console.log('card 1 is ' + img1Alt);
+          break;
+        case 2:
+          const img2Alt = card.querySelector('img').alt;
+          console.log('card 2 is ' + img2Alt);
+          break;
+        default:
+          console.log('smth wrong');
+      }
     }
     if (cardsOpenCounter === 2) {
       setTimeout(() => {

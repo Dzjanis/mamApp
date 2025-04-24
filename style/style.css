@@ -28,7 +28,7 @@ body {
   --col-width: 100dvw;
   --font-family: 'Simonetta';
   --card-size: 10rem;
-  --playGround-size: 920px;
+  --playGround-size: 70dvh;
 }
 .header, .main, .footer {
   width: var(--col-width);

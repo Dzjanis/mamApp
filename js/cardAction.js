@@ -5,36 +5,50 @@ console.log('hello from cardAction');
 //переворот карточки при клике//
 const playground = document.querySelector('.playground');
 let cardsOpenCounter = 0;
+let img1alt = undefined, img2alt = undefined;
 
 playground.addEventListener('click', function (event) {
-  console.log('pin' + event.target);
   const card = event.target.closest('.flip__card');
   if (card && !card.classList.contains('active')) {
     cardsOpenCounter++;
     console.log('pin ' + cardsOpenCounter + card.classList);
     if (cardsOpenCounter <= 2) {
       card.classList.add('active');
-      console.log('pin');
       switch (cardsOpenCounter) {
         case 1:
-          const img1Alt = card.querySelector('img').alt;
-          console.log('card 1 is ' + img1Alt);
+          img1alt = card.querySelector('img').alt;
           break;
         case 2:
-          const img2Alt = card.querySelector('img').alt;
-          console.log('card 2 is ' + img2Alt);
+          img2alt = card.querySelector('img').alt;
           break;
         default:
-          console.log('smth wrong');
+          alert('Fatal error! Refresh page')
       }
     }
-    if (cardsOpenCounter === 2) {
-      setTimeout(() => {
-        document.querySelectorAll('.flip__card').forEach(card => {
-          card.classList.remove('active');
-          cardsOpenCounter = 0;
-        });
-      }, 500);
-    }
   }
+  if (cardsOpenCounter === 2 && img1alt === img2alt) {
+    document.querySelectorAll('.flip__card.active').forEach(card => {
+      card.classList.add('match');
+      card.classList.remove('active');
+      cardsOpenCounter = 0;
+    })
+  }
+  if (cardsOpenCounter === 2 && img1alt !== img2alt) {
+    setTimeout(() => {
+      document.querySelectorAll('.flip__card').forEach(card => {
+        card.classList.remove('active');
+        cardsOpenCounter = 0;
+      });
+    }, 1000);
+  }
+});
+const newGame = document.getElementById('newGame');
+
+newGame.addEventListener('click', function (event) {
+  document.querySelectorAll('.flip__card.active').forEach(card => {
+    card.classList.remove('active');
+  });
+  document.querySelectorAll('.flip__card.match').forEach(card => {
+    card.classList.remove('match');
+  });
 });

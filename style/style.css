@@ -28,7 +28,7 @@ body {
   --col-width: 100dvw;
   --font-family: 'Simonetta';
   --card-size: 10rem;
-  --playGround-size: 70dvh;
+  --playGround-size: 80dvh;
 }
 .header, .main, .footer {
   width: var(--col-width);
@@ -147,11 +147,21 @@ body {
 .flip__card.active, .flip__card.match{
   transform: rotateY(180deg); /* Переворот при наведении */
 }
-@media(pointer: coarse){
+@media(pointer: coarse) and (orientation: portrait){
   html{
-    font-size: 12px;
+    font-size: 14px;
   }
   :root{
-    --playGround-size: 70dvw;
+    --playGround-size: 90dvw;
+  }
+  .header, .main, .footer {
+    width: var(--col-width);
+    max-width: 1000px;
+  }
+  .main {
+    height: 90dvh;
+  }
+  .header, footer {
+    height: 5dvh;
   }
 }

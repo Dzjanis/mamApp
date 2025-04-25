@@ -42,6 +42,8 @@ playground.addEventListener('click', function (event) {
     }, 1000);
   }
 });
+
+// запуск новой игры //
 const newGame = document.getElementById('newGame');
 
 newGame.addEventListener('click', function (event) {
@@ -52,3 +54,5 @@ newGame.addEventListener('click', function (event) {
     card.classList.remove('match');
   });
 });
+
+// перемешивание карточек //

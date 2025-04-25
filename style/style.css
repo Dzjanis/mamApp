@@ -147,4 +147,11 @@ body {
 .flip__card.active, .flip__card.match{
   transform: rotateY(180deg); /* Переворот при наведении */
 }
-
+@media(pointer: coarse){
+  html{
+    font-size: 12px;
+  }
+  :root{
+    --playGround-size: 70dvw;
+  }
+}

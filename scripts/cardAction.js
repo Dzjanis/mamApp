@@ -4,8 +4,19 @@ console.log('hello from cardAction');
 
 //переворот карточки при клике//
 const playground = document.querySelector('.playground');
+const newGame = document.getElementById('newGame');
+const shuffle = document.getElementById('shuffle');
 let cardsOpenCounter = 0;
 let img1alt = undefined, img2alt = undefined;
+
+// перемешивание карточек //
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Меняем местами элементы
+  }
+  return array;
+}
 
 playground.addEventListener('click', function (event) {
   const card = event.target.closest('.flip__card');
@@ -44,15 +55,23 @@ playground.addEventListener('click', function (event) {
 });
 
 // запуск новой игры //
-const newGame = document.getElementById('newGame');
 
-newGame.addEventListener('click', function (event) {
+newGame.addEventListener('click',  () => {
   document.querySelectorAll('.flip__card.active').forEach(card => {
     card.classList.remove('active');
   });
   document.querySelectorAll('.flip__card.match').forEach(card => {
     card.classList.remove('match');
   });
+  const cards = Array.from(playground.children)
+  shuffleArray(cards);
+  playground.innerHTML = '';
+  cards.forEach(card => playground.appendChild(card));
 });
 
-// перемешивание карточек //
+shuffle.addEventListener("click", () =>{
+  const cards = Array.from(playground.children)
+  shuffleArray(cards);
+  playground.innerHTML = '';
+  cards.forEach(card => playground.appendChild(card));
+});

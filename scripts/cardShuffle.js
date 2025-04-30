@@ -1,6 +1,8 @@
 'use strict';
+console.log('Creating CardShuffle...');
 
-
+const shuffle = document.getElementById('shuffle');
+let cardsArray = [1, 2, 3, 4 ,5 ,6];
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -11,5 +13,8 @@ function shuffleArray(array) {
 }
 
 // Пример использования:
-const arr = [1, 2, 3, 4, 5];
-console.log(shuffleArray(arr)); // Результат: перемешанный массив
+shuffle.addEventListener("click", () =>{
+console.log('before shufle' + shuffleArray);
+const shuffledArray = shuffleArray([...cardsArray]);
+console.log(shuffledArray);
+});
